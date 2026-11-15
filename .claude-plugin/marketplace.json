@@ -1,0 +1,16 @@
+{
+  "name": "chrismiho-wow-addons",
+  "owner": {
+    "name": "ChrisMiho"
+  },
+  "metadata": {
+    "description": "Claude Code skills for building World of Warcraft addons, especially for WoW Forever."
+  },
+  "plugins": [
+    {
+      "name": "wow-addon-skills",
+      "source": "./plugins/wow-addon-skills",
+      "description": "Verify WoW APIs per client flavor, run addon Lua offline under LuaJIT, hand device tests to a human, and prepare CurseForge releases."
+    }
+  ]
+}

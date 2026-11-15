@@ -1,0 +1,11 @@
+{
+  "name": "wow-addon-skills",
+  "version": "0.1.0",
+  "description": "Skills for World of Warcraft addon development: API verification per client flavor, an offline LuaJIT harness, device-test hand-offs and a CurseForge release checklist.",
+  "author": {
+    "name": "ChrisMiho"
+  },
+  "repository": "https://github.com/ChrisMiho/wow-addon-skills",
+  "license": "GPL-3.0",
+  "keywords": ["wow", "world-of-warcraft", "addon", "lua", "curseforge", "wow-forever"]
+}
