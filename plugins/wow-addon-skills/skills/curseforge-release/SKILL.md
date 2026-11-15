@@ -53,8 +53,10 @@ CurseForge rejects or flags a zip that contains:
 Also check:
 - Each addon folder is at the zip root and contains `<Folder>.toc` or
   `<Folder>_<Suffix>.toc`. No `src/`, `tests/`, `vendor/`, `.git`.
-- Only this project's addon is inside. A dependency that has its own
-  CurseForge project goes in Relations (step 5), never bundled.
+- No standalone or data addon that has its own CurseForge project (for
+  example QuestieDB) is bundled; link it as a relation (step 5). Embedding
+  small libraries (LibStub-style) inside the addon folder is common practice
+  and fine.
 - Every file the TOC lists exists in the zip.
 
 ## 3. Project page (first release only)
@@ -73,22 +75,26 @@ Also check:
 
 - **Display name / file**: the zip from step 2.
 - **Flavor and game version**: from step 1.
-- **Release type**:
-  - `Release`: tested, for everyone. The CurseForge app installs only these
-    by default.
-  - `Beta`: tested but rough or incomplete; users opt in to see it.
-  - `Alpha`: untested or work in progress; most users never see it.
+- **Release type** (policy for choosing; how the CurseForge app treats each
+  type depends on the user's release-type setting there, so check the app
+  rather than promising who will see it):
+  - `Release`: device-tested, meant for everyone.
+  - `Beta`: device-tested but rough or incomplete.
+  - `Alpha`: untested or work in progress.
   A 0.x version number already signals "early"; use `Release` for a tested
   0.x build, not `Beta`.
 - **Changelog**: paste the `## [<version>]` section of `CHANGELOG.md` (Markdown).
 
 ## 5. Relations
 
-Add each dependency that has a CurseForge project by name, slug or project ID,
-marked **Required** or **Optional**. The CurseForge relation can differ from
-the TOC: a TOC `OptionalDeps` (the addon loads without it) may still be a
-CurseForge **Required** relation when the main features need it, so the app
-installs it automatically. Say which you chose and why.
+Add each dependency that has a CurseForge project by name, slug or project
+ID. Check the relation types the form offers: **Required** and **Optional**
+exist; others such as Embedded Library, Tool, Incompatible or Include may
+appear (unverified). Pick the type from the form, not from memory.
+The CurseForge relation can differ from the TOC: a TOC `OptionalDeps` (the
+addon loads without it) may still be a CurseForge **Required** relation when
+the main features need it, so the app should install it alongside. Say which
+you chose and why.
 
 ## 6. `## X-Curse-Project-ID`
 

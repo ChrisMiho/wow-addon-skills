@@ -18,8 +18,8 @@ human's explicit approval; propose it, do not add it unasked.
   `CF_API_TOKEN`. `CF_API_KEY` is the deprecated name; do not use it in new
   workflows. The human creates the token on CurseForge and adds the secret;
   never ask them to paste it into the chat.
-- **Release type** comes from the tag: a plain version tag is a Release;
-  tags containing `beta` or `alpha` produce those types. Confirm against the
-  packager's README for the version pinned in the workflow.
+- **Release type**: check the packager README (for the version pinned in
+  the workflow) for how tags map to release types; typically a plain version
+  tag is a Release and tags containing `beta` or `alpha` produce those types.
 - The zip hygiene rules in SKILL.md still apply; check the packager's
   `.pkgmeta` ignore list keeps `tests/`, `vendor/` and dev files out.

@@ -11,19 +11,25 @@ interface code, mirrored per flavor in `github.com/Gethe/wow-ui-source`.
 
 ## 1. Pick the branch
 
-One branch per flavor. Current branches include:
+One branch per flavor. Only the first row below is confirmed (branch head
+build `1.60.1 (70938)`, matching the WoW Forever client). The others are
+likely matches from the branch names, not checked:
 
-| Flavor | Branch |
-|---|---|
-| WoW Forever (internal name "Camelot", interface 16xxx) | `forever` |
-| Classic Era / Hardcore | `classic_era` (`classic_era_ptr`) |
-| Progression Classic | `classic` (`classic_ptr`) |
-| Anniversary realms | `classic_anniversary` |
-| Retail | `live` (`ptr`, `ptr2`, `beta`) |
+| Flavor | Branch | Status |
+|---|---|---|
+| WoW Forever (internal name "Camelot", interface 16xxx) | `forever` | confirmed |
+| Classic Era / Hardcore | `classic_era` (`classic_era_ptr`) | unconfirmed |
+| Current progression Classic | `classic` (`classic_ptr`) | unconfirmed |
+| Anniversary realms | `classic_anniversary` | unconfirmed |
+| Retail | `live` (`ptr`, `ptr2`, `beta`) | unconfirmed |
 
 List them fresh if unsure: `git ls-remote --heads https://github.com/Gethe/wow-ui-source.git`.
 The branch's latest commit message is the client build, e.g. `1.60.1 (70938)`:
 `gh api repos/Gethe/wow-ui-source/commits/forever --jq .commit.message`.
+Before trusting a branch, compare that build with the client's version
+(shown on the login screen, or `/dump GetBuildInfo()` in game) or with the
+addon's TOC `## Interface` number. If they do not match, the branch is the
+wrong flavor or out of date: say so and do not use it as evidence.
 Record that build next to every fact you verify.
 
 Do not use `gh search code` or GitHub's web search: they index only the
@@ -96,7 +102,7 @@ missing). One row per unverified item:
 
 | What | Used by | If it is wrong |
 |---|---|---|
-| `GetPlayerFacing` direction (0 = north, counter-clockwise) | Arrow | Arrow turns the wrong way; one line flips it |
+| `C_Foo.Bar` return order (documented only by usage) | Feature X | Feature X shows the wrong value; the feature stays usable |
 
 The third column is the worst case a player would see, in plain words. Head
 the table with the branch and build you checked against. Move a row to a

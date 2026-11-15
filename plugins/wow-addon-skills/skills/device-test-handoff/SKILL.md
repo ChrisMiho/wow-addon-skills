@@ -29,12 +29,12 @@ a failure cannot be pinned on either.
 
 ## 2. Write the steps
 
-The tester is usually a player, not a developer, often on a handheld with no
-keyboard. Write for that:
+The tester is usually a player, not a developer, sometimes with no keyboard
+(e.g. on a handheld). Write for that:
 
 - **Install step first**: where to extract, what to delete (old folders of
-  renamed or merged addons), and to fully restart the game if a TOC or new
-  file was added (`/reload` does not pick up new files).
+  renamed or merged addons), and to fully restart the game after adding files or
+  editing the TOC (`/reload` may not pick them up).
 - **Numbered steps, one action each**, in the form
   *do this* → *you should see that* → *report back*:
 

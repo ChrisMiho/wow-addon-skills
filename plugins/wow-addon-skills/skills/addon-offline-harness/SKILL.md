@@ -99,8 +99,10 @@ io.stdout:write("PASS\n") os.exit(0)
   `Mixin`, `CreateFromMixins`). Stub only those you hit. `bit` exists in both.
 - `metadata.lua` skips `.xml` files in a TOC. Frames declared in XML do not
   exist; templates referenced from Lua will be missing.
-- `[AllowLoadGameType ...]` lines need `opts.gameType`; unknown tokens are an
-  error rather than silently included.
+- `[AllowLoadGameType ...]` lines need `opts.gameType`, one of `vanilla`,
+  `tbc`, `wrath`, `cata`, `mists`, `camelot`, `forever` (the set
+  `metadata.lua` knows). Unknown tokens are an error rather than silently
+  included.
 - `GetAddOnMetadata` answers only for the addon most recently loaded with
   `S.loadAddon`; load the one whose metadata matters last.
 - The data addon's folder name is the `addonName` passed to its files. Use

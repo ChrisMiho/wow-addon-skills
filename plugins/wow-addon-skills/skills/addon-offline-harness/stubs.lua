@@ -12,7 +12,8 @@
 --       load every Lua file the TOC lists, in order, as the game does: each file
 --       gets (addonName, ns). opts = { baseDir = dir the TOC's paths resolve
 --       against (default: the TOC's folder), gameType = "forever"|"vanilla"|...
---       (needed when the TOC has [AllowLoadGameType ...] lines), reset = { names
+--       (needed when the TOC has [AllowLoadGameType ...] lines; one of vanilla, tbc,
+--       wrath, cata, mists, camelot, forever), reset = { names
 --       of globals to clear first, so a reload starts clean } }
 --   S.loadFile(path, addonName, ns) -> ns   run one Lua file with (addonName, ns)
 --   S.fire(event, ...)                  call OnEvent on every stub frame registered for event
@@ -107,6 +108,7 @@ local CLASS_ID = { WARRIOR = 1, PALADIN = 2, HUNTER = 3, ROGUE = 4, PRIEST = 5, 
     MAGE = 8, WARLOCK = 9, DRUID = 11 }
 
 function S.install(persona, extra)
+    if not encoding then error("call S.init(libDir) before S.install", 2) end
     persona = persona or {}
     local faction, class = persona.faction or "Alliance", persona.class or "WARRIOR"
     local locale = persona.locale or "enUS"
@@ -124,11 +126,11 @@ function S.install(persona, extra)
     _G.UnitFactionGroup = function() return faction, faction end
     _G.UnitClassBase = function() return class, CLASS_ID[class] end
     _G.GetLocale = function() return locale end
-    _G.C_EncodingUtil = encoding and {
+    _G.C_EncodingUtil = {
         DecodeBase64 = encoding.DecodeBase64,
         DecompressString = encoding.DecompressString,
         DeserializeCBOR = encoding.DeserializeCBOR,
-    } or nil
+    }
     for k, v in pairs(extra or {}) do _G[k] = v end
 end
 
